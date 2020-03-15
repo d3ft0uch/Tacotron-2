@@ -127,7 +127,7 @@ hparams = tf.contrib.training.HParams(
 
     # Tacotron
     # Model general type
-    outputs_per_step=1,
+    outputs_per_step=3,
     # number of frames to generate at each decoding step (increase to speed up computation and allows for higher batch size, decreases G&L audio quality)
     stop_at_any=True,
     # Determines whether the decoder should stop when predicting <stop> to any frame or to all of them (True works pretty well)
