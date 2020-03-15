@@ -70,7 +70,7 @@ hparams = tf.contrib.training.HParams(
     # For cases of OOM (Not really recommended, only use if facing unsolvable OOM errors, also consider clipping your samples to smaller chunks)
     max_mel_frames=800,
     # Only relevant when clip_mels_length = True, please only use after trying output_per_steps=3 and still getting OOM errors.
-
+    output_per_steps=3,
     # Use LWS (https://github.com/Jonathan-LeRoux/lws) for STFT and phase reconstruction
     # It's preferred to set True to use with https://github.com/r9y9/wavenet_vocoder
     # Does not work if n_ffit is not multiple of hop_size!!
