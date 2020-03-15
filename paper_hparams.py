@@ -32,8 +32,8 @@ hparams = tf.contrib.training.HParams(
 
     # Hardware setup: Default supposes user has only one GPU: "/gpu:0" (Tacotron only for now! WaveNet does not support multi GPU yet, WIP)
     # Synthesis also uses the following hardware parameters for multi-GPU parallel synthesis.
-    tacotron_num_gpus=4500,  # Determines the number of gpus in use for Tacotron training.
-    wavenet_num_gpus=4500,  # Determines the number of gpus in use for WaveNet training. (WIP)
+    tacotron_num_gpus=1,  # Determines the number of gpus in use for Tacotron training.
+    wavenet_num_gpus=1,  # Determines the number of gpus in use for WaveNet training. (WIP)
     split_on_cpu=True,
     # Determines whether to split data on CPU or on first GPU. This is automatically True when more than 1 GPU is used.
     # (Recommend: False on slow CPUs/Disks, True otherwise for small speed boost)
