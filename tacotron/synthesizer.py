@@ -1,4 +1,5 @@
 import os
+import platform
 import wave
 from datetime import datetime
 
@@ -12,7 +13,7 @@ from librosa import effects
 from tacotron.models import create_model
 from tacotron.utils import plot
 from tacotron.utils.text import text_to_sequence
-
+import time
 
 class Synthesizer:
 	def load(self, checkpoint_path, hparams, gta=False, model_name='Tacotron'):
@@ -166,20 +167,21 @@ class Synthesizer:
 				wav = audio.inv_preemphasis(wav, hparams.preemphasis, hparams.preemphasize)
 			else:
 				wav = audio.inv_mel_spectrogram(mels[0].T, hparams)
-			audio.save_wav(wav, 'temp.wav', sr=hparams.sample_rate) #Find a better way
-
-			if platform.system() == 'Linux':
-				#Linux wav reader
-				os.system('aplay temp.wav')
-
-			elif platform.system() == 'Windows':
-				#windows wav reader
-				os.system('start /min mplay32 /play /close temp.wav')
-
-			else:
-				raise RuntimeError('Your OS type is not supported yet, please add it to "tacotron/synthesizer.py, line-165" and feel free to make a Pull Request ;) Thanks!')
-
+			milis = int(round(time.time() * 1000))
+			audio.save_wav(wav, '{}.wav'.format(milis), sr=hparams.sample_rate) #Find a better way
 			return
+			# if platform.system() == 'Linux':
+			# 	#Linux wav reader
+			# 	os.system('aplay temp.wav')
+			#
+			# elif platform.system() == 'Windows':
+			# 	#windows wav reader
+			# 	os.system('start /min mplay32 /play /close temp.wav')
+			#
+			# else:
+			# 	raise RuntimeError('Your OS type is not supported yet, please add it to "tacotron/synthesizer.py, line-165" and feel free to make a Pull Request ;) Thanks!')
+			#
+			# return
 
 
 		saved_mels_paths = []

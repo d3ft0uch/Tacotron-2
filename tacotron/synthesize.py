@@ -11,8 +11,8 @@ from tacotron.synthesizer import Synthesizer
 from tqdm import tqdm
 
 
-def generate_fast(model, text):
-	model.synthesize([text], None, None, None, None)
+def generate_fast(model, texts):
+	model.synthesize(texts, None, None, None, None)
 
 
 def run_live(args, checkpoint_path, hparams):
@@ -24,18 +24,19 @@ def run_live(args, checkpoint_path, hparams):
 	#Generate fast greeting message
 	greetings = 'Hello, Welcome to the Live testing tool. Please type a message and I will try to read it!'
 	log(greetings)
-	generate_fast(synth, greetings)
+	# generate_fast(synth, greetings)
 
 	#Interaction loop
 	while True:
 		try:
 			text = input()
-			generate_fast(synth, text)
+			texts = text.split('\n')
+			generate_fast(synth, texts)
 
 		except KeyboardInterrupt:
 			leave = 'Thank you for testing our features. see you soon.'
 			log(leave)
-			generate_fast(synth, leave)
+			# generate_fast(synth, leave)
 			sleep(2)
 			break
 
