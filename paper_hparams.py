@@ -34,7 +34,7 @@ hparams = tf.contrib.training.HParams(
     # Synthesis also uses the following hardware parameters for multi-GPU parallel synthesis.
     tacotron_num_gpus=1,  # Determines the number of gpus in use for Tacotron training.
     wavenet_num_gpus=1,  # Determines the number of gpus in use for WaveNet training. (WIP)
-    split_on_cpu=True,
+    split_on_cpu=False,
     # Determines whether to split data on CPU or on first GPU. This is automatically True when more than 1 GPU is used.
     # (Recommend: False on slow CPUs/Disks, True otherwise for small speed boost)
     ###########################################################################################################################################

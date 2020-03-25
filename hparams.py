@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import numpy as np
 import tensorflow as tf
 
@@ -34,7 +35,7 @@ hparams = tf.contrib.training.HParams(
     # Synthesis also uses the following hardware parameters for multi-GPU parallel synthesis.
     tacotron_num_gpus=1,  # Determines the number of gpus in use for Tacotron training.
     wavenet_num_gpus=1,  # Determines the number of gpus in use for WaveNet training.
-    split_on_cpu=True,
+    split_on_cpu=False,
     # Determines whether to split data on CPU or on first GPU. This is automatically True when more than 1 GPU is used.
     # (Recommend: False on slow CPUs/Disks, True otherwise for small speed boost)
     ###########################################################################################################################################
@@ -395,14 +396,16 @@ hparams = tf.contrib.training.HParams(
 
     # Eval/Debug parameters
     # Eval sentences (if no eval text file was specified during synthesis, these sentences are used for eval)
-	sentences=[
-		'Handballer setzen mit Training aus',
-		'Weil die Einsicht bei den Verantwortlichen spät kam',
-		'Die geforderte Kehrtwende war am Ende unausweichlich',
-		'Wir haben uns am Nachmittag dazu entschieden',
-		'Er plädierte zugleich für eine Absage der Ende März geplanten',
-		'Für die prestigeträchtigen Spiele hat Japan aus der Staatskasse Milliarden investiert und laut Aussagen'
-	],
+    sentences=[
+        'Handballer setzen mit Training aus',
+        'Weil die Einsicht bei den Verantwortlichen spät kam',
+        'Die geforderte Kehrtwende war am Ende unausweichlich',
+        'Wir haben uns am Nachmittag dazu entschieden',
+        'Er plädierte zugleich für eine Absage der Ende März geplanten',
+        'Für die prestigeträchtigen Spiele hat Japan aus der Staatskasse Milliarden investiert und laut Aussagen',
+        'Mit einem eindringlichen Appell an Kunden und Politik',
+        'Knapp eine halbe Million Nutzerinnen und Nutzer sahen binnen'
+    ],
 
     # Wavenet Debug
     wavenet_synth_debug=False,  # Set True to use target as debug in WaveNet synthesis.
